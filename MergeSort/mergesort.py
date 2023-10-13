@@ -1,5 +1,3 @@
-import sys
-sys.setrecursionlimit(10**6)
 
 def merge(A,p,q,r):
     n1 = q-p + 1
