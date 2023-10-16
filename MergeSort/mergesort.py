@@ -14,6 +14,9 @@ def merge(A,p,q,r):
     R[n2]=-2
     i=0
     j=0
+
+    print("L = ", L)
+    print("R = ", R)
     for k in range(p,r):
         #we don't want to copy our "sentinel values" so we assign them numebers like infinite but since i don't know how, i just assign them -1
         if( (L[i] >=0) and R[j] >= 0):
