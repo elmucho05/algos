@@ -69,7 +69,18 @@ def find_max_subarray(A, low, high):
             return (cross_low, cross_high, cross_sum)
             
 
-
+"""
+As for the cost of this algorithm we have:
+    - T(n) --> a sequence of n elements
+    - we divide the sequence in half everytime --> so b=n/2
+    - since we have to solve 2 subproblems, we have 2T(n/2)
+    - the "for" loops in 'find_max_crossing_subarray' cost us a total of O(n)
+    - and the other operations O(1)
+    
+    In the end we have : 
+        T(n) = 2T(n/2) + O(n) + O(1)
+        T(n) = 2T(n/2) + O(n)
+"""
 if __name__ == "__main__":
     A = [13,-3,-25,20,-3, -16,-23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
     print(A)
