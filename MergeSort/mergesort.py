@@ -38,8 +38,6 @@ def mergesort(A,p,r):
         mergesort(A,q+1,r)
         merge(A,p,q,r)
 
-
-    
 def main():
     A = [2,4,5,7,1,2,3,6]
     print(A)
