@@ -9,8 +9,7 @@ def partition(A,p,r):
             A[j] = app
     tmp = A[i+1]
     A[i+1] = A[r]
-    A[r] = app
-
+    A[r] = tmp
     return i+1
 
 def quicksort(A,p,r):
