@@ -22,7 +22,7 @@ def quicksort(A, p, r):
         q = partition(A, p,r)
         print("COMINCIO CON LA METÀ DI SINISTRA\n")
         quicksort(A, p, q-1)
-        print("Cominciio con la metà di destra\n")
+        print("COMINCIO CON LA METÀ DI DESTRA\n")
         quicksort(A, q+1, r)
 
 if __name__ == "__main__":
