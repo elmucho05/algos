@@ -11,7 +11,7 @@ As for now I have implemented:
 
 From what i've learned unil now, the time comlexities of the most famous algos are :
 
-Algorithms and their time comlexity (**Worst case**)
+Algorithms and their time complexity (**Worst case**)
 ---
 - InsertionSort   O($n^2$)
 - MergeSort       O(n log n)
