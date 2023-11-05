@@ -2,13 +2,12 @@
 The login behind slection sort is the following:
 - first we find the index of the samllest element and then we swap it for A[1]
 - then we do the same for the second up until *n-1*
-- note: we do not execute it the last time
-
+- note: we do not execute it the last time beacuse the last element is hte bigest one, so already in order
 Selection sort is a Recursive procedure and not a fuction beacuse it does not return anything
 """
 
 def indexMin(A,i,n):
-    #say i have indexMin(A,0, 5)
+    #say i have indexMin(A,0, 6)
     index_of_min = i #the index of the min value is the first value initially
     
     #scrolling the next elements
@@ -32,5 +31,6 @@ def selection_sort(A, i, n):
 if __name__ == "__main__":
     A = [2,4,3,5,6,1]
     print(A)
+    #note that in this case we send the actual length, so 6
     selection_sort(A, 0, len(A))
     print(A)
