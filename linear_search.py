@@ -6,17 +6,13 @@ def linear_search(A,v):
     i=0
     while(i<len(A) and A[i] != v):
         i+=1
-        print(i)
 
     if i<len(A):
         return i
     else:
-        return NIL
+        return None
 
-def main():
-    A = [2,4,5,1,3]
-    print("hello world")
-    print(linear_search(A,3))
 
 if __name__ == "__main__":
-    main()
+    A = [2,4,5,1,3]
+    print(linear_search(A,3))
