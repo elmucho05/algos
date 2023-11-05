@@ -6,4 +6,13 @@ As for now I have implemented:
 - Insertion Sort
 - Merge Sort
 - Find maximum subarray
+- Selection Sort
+- Binary Search
 
+From what i've learned unil now, the time comlexities of the most famous algos are :
+
+Algorithm       Time Comlexity (**Worst case**)
+---
+InsertionSort   O($n^2$)
+MergeSort       O(n log n)
+SelectionSort   O($n^2$)
