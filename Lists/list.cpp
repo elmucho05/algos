@@ -46,6 +46,12 @@ node* search(node*& l, int i){
     return tmp;
 }
 
+//insert node e in position i
+void insert_pos(node*& l, node* e, int i){
+    node* correct_node = search(l, i);
+    insert_next(correct_node, e);
+}
+
 int main(){
 
     node* mylist = new_list();
@@ -68,9 +74,17 @@ int main(){
         cout << current->val << " ";
         current = current->next;
     }
-    node* searched_node = search(mylist, 3);
+    node* searched_node = search(mylist, 2);
 
     cout << "\nSearching for element in pos 2, they start form 0 >>" << searched_node->val;
+    cout << "\nInserting node 6, after node in pos 2 (should be 3) : \n";
+    node* node6 = new_node(6);
+    insert_pos(mylist, node6, 2);
+    current = mylist;
+    while(current!=nullptr){
+        cout << current->val << " ";
+        current = current->next;
+    }
     cout << "\n";
     return 0;
    
