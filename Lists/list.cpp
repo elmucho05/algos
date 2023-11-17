@@ -49,7 +49,8 @@ node* search(node*& l, int i){
 //insert node e in position i
 void insert_pos(node*& l, node* e, int i){
     node* correct_node = search(l, i);
-    insert_next(correct_node, e);
+    if(correct_node!=nullptr)
+        insert_next(correct_node, e);
 }
 
 int main(){
