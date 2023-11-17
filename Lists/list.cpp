@@ -44,6 +44,7 @@ int main(){
     node* mynode2 = new_node(2);
     node* mynode3 = new_node(3);
     insert_next(mynode1, mynode2);
+    insert_next(mynode2, mynode3);
     cout << "Printing the conents of the list"<< endl;
     //if you don't create the current node, you simply lose the pointer to the list
     node* current = mylist;
