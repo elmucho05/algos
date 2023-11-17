@@ -53,6 +53,22 @@ void insert_pos(node*& l, node* e, int i){
         insert_next(correct_node, e);
 }
 
+//delete 'e' from the list
+void delete_node(node*& l, node* e){
+    if(l == e)
+        l = l->next;
+    else{
+        node* tmp = l;
+        while(tmp!=nullptr && tmp->next!=e){
+            tmp = tmp->next;
+        }
+        //if tmp, hasn't reached the end of the list, i have found the node
+        if(tmp->next!=nullptr)
+            tmp->next = e->next;
+    }
+}
+
+
 int main(){
 
     node* mylist = new_list();
@@ -77,10 +93,18 @@ int main(){
     }
     node* searched_node = search(mylist, 2);
 
-    cout << "\nSearching for element in pos 2, they start form 0 >>" << searched_node->val;
+    cout << "\n\nSearching for element in pos 2, they start form 0 >>" << searched_node->val;
     cout << "\nInserting node 6, after node in pos 2 (should be 3) : \n";
     node* node6 = new_node(6);
     insert_pos(mylist, node6, 2);
+    current = mylist;
+    while(current!=nullptr){
+        cout << current->val << " ";
+        current = current->next;
+    }
+    cout << "\n\nDeleting node6 from the list\n";
+    delete_node(mylist, search(mylist,3));
+    cout << "\n\n";
     current = mylist;
     while(current!=nullptr){
         cout << current->val << " ";
