@@ -33,6 +33,19 @@ void insert_next(node* p, node* e){
     p->next = e;
 }
 
+//return the pointer to the node in position i, otherwise nullptr
+node* search(node*& l, int i){
+    int j=0;
+    node* tmp = l;
+    
+    while(j<i && tmp!=nullptr){
+        tmp = tmp->next;
+        j++;
+    }
+
+    return tmp;
+}
+
 int main(){
 
     node* mylist = new_list();
@@ -43,8 +56,11 @@ int main(){
     
     node* mynode2 = new_node(2);
     node* mynode3 = new_node(3);
+    node* mynode4 = new_node(4);
+
     insert_next(mynode1, mynode2);
     insert_next(mynode2, mynode3);
+    insert_next(mynode3, mynode4);
     cout << "Printing the conents of the list"<< endl;
     //if you don't create the current node, you simply lose the pointer to the list
     node* current = mylist;
@@ -52,7 +68,9 @@ int main(){
         cout << current->val << " ";
         current = current->next;
     }
-    
+    node* searched_node = search(mylist, 3);
+
+    cout << "\nSearching for element in pos 2, they start form 0 >>" << searched_node->val;
     cout << "\n";
     return 0;
    
