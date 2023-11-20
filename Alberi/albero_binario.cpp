@@ -48,8 +48,14 @@ void insert_right(node*& t, node* e){
 int conta_nodi(node* t){
     if(t == nullptr)
         return 0;
-    else
-        return 1+ conta_nodi(t->left) + conta_nodi(t->right);
+    else{
+        int left=conta_nodi(t->left);
+        int right=conta_nodi(t->right);
+        cout<<"\nval=" << t->val;
+        cout <<"left="<< left <<",right="<< right << endl;
+
+        return (1+left+right); 
+    }
 }
 
 int altezza_albero(node*t ){
@@ -62,14 +68,27 @@ int altezza_albero(node*t ){
 
     //     return max(left_height,right_height) +1;
     // }
-    if(t->left == nullptr && t->right == nullptr)
-        return 0;
-    if(t->left==nullptr)
-        return 1+altezza_albero(t->right);
-    if(t->right == nullptr)
-        return 1+altezza_albero(t->left);
+    //----alternative---//
+    // if(t->left == nullptr && t->right == nullptr)
+    //     return 0;
+    // if(t->left==nullptr)
+    //     return 1+altezza_albero(t->right);
+    // if(t->right == nullptr)
+    //     return 1+altezza_albero(t->left);
     
-    return (1+max(altezza_albero(t->left),altezza_albero(t->right)));
+    // return (1+max(altezza_albero(t->left),altezza_albero(t->right)));
+    //------alternative---//
+    if(t==nullptr)
+        return -1;
+    else{
+        //return (1+max(altezza_albero(t->left), altezza_albero(t->right)));
+        int left = altezza_albero(t->left);
+        int right  = altezza_albero(t->right);
+        cout << "\nval="<<t->val;
+        cout << "left=" << left << ",right=" << right;
+        return 1+max(left,right);
+    }
+
 }
 
 void dfs(node* &t){
@@ -92,9 +111,10 @@ int main(){
     insert_right(t, n2);
     /*
             0
-        1       2
-                    3
-                        4
+    1               2
+             
+                3
+            4
 
                             height = 3
     */
