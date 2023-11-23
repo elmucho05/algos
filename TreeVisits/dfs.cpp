@@ -32,9 +32,25 @@ void insert_right(node* t, node* n){
 
 void dfs_pre_order(node* t){
     if(t != nullptr){
-        cout << t->key << endl;
+        cout << t->key << " " ;
         dfs_pre_order(t->left);
         dfs_pre_order(t->right);
+    }
+}
+
+void dfs_in_order(node* t){
+    if(t!=nullptr){
+        dfs_in_order(t->left);
+        cout << t->key << " "; 
+        dfs_in_order(t->right);
+    }
+}
+
+void dfs_post_order(node* t){
+    if(t != nullptr){
+        dfs_post_order(t->left);
+        dfs_post_order(t->right);
+        cout << t->key << " ";
     }
 }
 
@@ -57,13 +73,19 @@ int main(){
     insert_right(n2, n4);
     insert_left(n4, n7);
     insert_right(n4, n5);
+
 /*
                 0
-        1                 2
-3                   6            4
-                            7         5
+        1                       2
+3                       6               4
+                                    7       5
 
 */
     dfs_pre_order(t->root);
+    cout << endl;
+    dfs_in_order(t->root);
+    cout << endl;
+    dfs_post_order(t->root);
+    cout << endl;
     return 0;
 }
