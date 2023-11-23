@@ -18,3 +18,7 @@ Algorithms and their time complexity (**Worst case**)
 - SelectionSort   O($n^2$)
 - BinarySearch    O(logn)
 - QuickSort       O($n^2$ or in normal case O(n logn))
+- Lists
+- Queues
+- Stacks
+- BinaryTrees
