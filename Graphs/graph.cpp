@@ -1,99 +1,82 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
+#define MAX_VERTICES 100
 
-struct node{
-    int val;
-    struct node* next;
+struct Node {
+    char vertex;
+    struct Node* next;
 };
 
-struct lista{
-    struct node* head;
+struct Graph {
+    struct Node* adjacencyList[MAX_VERTICES];
+    bool visited[MAX_VERTICES];
 };
 
-node* new_node(int x){
-    node* e = new node;
-    e->val = x;
-    e->next = nullptr;
-    return e;
-}
-node* new_list(){
-    return nullptr;
-}
-
-void insert_head(lista* l, node* e){
-    e->next = l->head;
-    l->head = e;
-}
-
-//insert e after p
-void insert_next(node* p, node* e){
-    e->next = p->next;
-    p->next = e;
-}
-
-void delete_list(lista* l) {
-    node* current = l->head;
-    while (current != nullptr) {
-        node* next = current->next;
-        delete current;
-        current = next;
+struct Graph* createGraph() {
+    struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
+    for (int i = 0; i < MAX_VERTICES; ++i) {
+        graph->adjacencyList[i] = NULL;
+        graph->visited[i] = false;
     }
-    l->head = nullptr;  // Set the head to nullptr after deleting all nodes
+    return graph;
 }
 
-
-void delete_graph(lista* G[], int numVertices) {
-    for (int i = 0; i < numVertices; i++) {
-        delete_list(G[i]);
-    }
-}
-void dfs_visit(lista* G[], bool* visited, int v) {
-    visited[v] = true;
-    cout << v << " ";
-    node* current = G[v]->head;
-    while (current != nullptr) {
-        int neighbour = current->val;
-        if (!visited[neighbour]) {
-            dfs_visit(G, visited, neighbour);
-        }
-        current = current->next;
-    }
+struct Node* createNode(char vertex) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->vertex = vertex;
+    newNode->next = NULL;
+    return newNode;
 }
 
-void dfs(lista* G[], bool* visited, int numVertices) {
-    for (int i = 0; i < numVertices; i++) {
-        if (!visited[i])
-            dfs_visit(G, visited, i);
-    }
+void addEdge(struct Graph* graph, char vertex1, char vertex2) {
+    // Assuming an undirected graph     A               B
+    struct Node* newNode = createNode(vertex2); //B
+    newNode->next = graph->adjacencyList[vertex1]; //b.next = graph
+    graph->adjacencyList[vertex1] = newNode;//insert_next
+    //i just inserted node B into the adjacency list of the node A
+    //insert in head, then head points to newNode
+    
+    //same thing, add nodeA in the list of adjacent nodes of nodeB
+    newNode = createNode(vertex1);
+    newNode->next = graph->adjacencyList[vertex2];
+    graph->adjacencyList[vertex2] = newNode;
 }
-int main(){
 
-    node* n1 = new_node(1);
-    node* n2 = new_node(2);
-    node* n3 = new_node(3);
-    node* n4 = new_node(4);
+// void dfsVisit(struct Graph* graph, char currentVertex) {
+//     printf("%c\n", currentVertex);
+//     graph->visited[currentVertex] = true;
 
-    lista* l1 = new lista;
-    insert_head(l1, n1);
-    insert_next(l1->head, n2);
-    insert_next(l1->head->next, n3);
+//     struct Node* neighbor = graph->adjacencyList[currentVertex];
+//     while (neighbor != NULL) {
+//         if (!graph->visited[neighbor->vertex]) {
+//             dfsVisit(graph, neighbor->vertex);
+//         }
+//         neighbor = neighbor->next;
+//     }
+// }
 
-    lista* l2 = new lista;
-    insert_head(l2, n4);
+// void dfs(struct Graph* graph, char startVertex) {
+//     for (int i = 0; i < MAX_VERTICES; ++i) {
+//         graph->visited[i] = false;
+//     }
 
-    lista* l3 = new lista;
-    insert_head(l3, n2);
+//     dfsVisit(graph, startVertex);
+// }
 
-    lista* l4 = new lista;
-    insert_head(l4, n2);
-    insert_next(l4->head, n3);
+// int main() {
+//     struct Graph* myGraph = createGraph();
 
-    lista* G[] = {l1, l2, l3, l4};
-    bool* visited = new bool[4]{false, false, false, false};
-    dfs(G, visited, 4);
-    ///delete_graph(G, 4);
+//     // Add vertices
+//     addEdge(myGraph, 'A', 'B');
+//     addEdge(myGraph, 'B', 'C');
+//     addEdge(myGraph, 'C', 'D');
+//     addEdge(myGraph, 'D', 'A');
 
-    delete[] visited;
-    return 0;
-}
+//     // Perform DFS starting from vertex 'A'
+//     printf("Depth-First Search:\n");
+//     dfs(myGraph, 'A');
+
+//     return 0;
+// }
