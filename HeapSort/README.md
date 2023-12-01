@@ -1,31 +1,29 @@
 ![Heap](./heapsort.png)
 
-Un heap (binario) è una struttura dati composta da un array che possiamo consi-
-derare come un albero binario quasi completo (vedere il Paragrafo B.5.3), come
-illustra la Figura 6.1. Ogni nodo dell’albero corrisponde a un elemento dell’ar-
-ray. Tutti i livelli dell’albero sono completamente riempiti, tranne eventualmente
-l’ultimo che può essere riempito da sinistra fino a un certo punto.
+### MinHeap
+Dato un insieme di chiavi totalmente odinabile, *heap binario* è un **albero binario** che memorizza chiavi dell'insieme e :
+- ogni nodo memorizza una sola chiave
+- mantiene la *PROPRIETA' STRUTTURALE/TOPOLOGICA*: l'albero è binario completo e quasi perfettamente bilanciato a sinistra
 
-Ci sono due tipi di heap binari: max-heap e min-heap. In entrambi i tipi, i valori
-nei nodi soddisfano una proprietà dell’heap, le cui caratteristiche dipendono dal
-tipo di heap. In un max-heap, la proprietà del max-heap è che per ogni nodo i
-diverso dalla radice, si ha
+- Proprietà di ordinamento: per ogni nodo *v* dell'albero, la chiave memorizzata in *v* è *$\le$* delle chiavi memorizzate nel sottoalbero radicato in v
 
-A[parent(i)] >= A[i]
+### MaxHeap
+Stessa cosa ma la chiave memorizzata in v è $\ge$ delle chiavi memorizzate nel sottoalbero in v.
 
+Siccome un albero binario completo perfettamente bilanciato ha altezza : $n=2^{h+1} -1$
 
-invece nel min-heap abbiamo:
-
-A[parent(i)] >= A[i]
-
-dove il più piccolo elemento è la radice.
+>un heap con *n* nodi ha altezza $h = log n$
 
 
-In questi esempi useremo i max-heap. 
-Se osserviamo un heap nella forma di albero, definiamo altezza di un nodo il
-numero di archi nel cammino semplice più lungo che dal nodo scende fino a una
-foglia. Definiamo altezza di un heap l’altezza della sua radice. Poiché un heap di
-n elementi è basato un albero binario completo, la sua altezza.
+#### Variabili da utilizzare
+- **DimHeap** : ultimo indice contenente una chiave dell'heap
+- *padre* 
+- LungHeap : ultimo indice dell'array
 
- Vedremo che le operazioni fondamentali sugli heap vengono eseguite in un tempo che è al massimo proporzionale all’altezza dell’albero e, quindi, richiedono un tempo O(lg n).
+```pseudocode
+a
+```
+
+
+
 
